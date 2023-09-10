@@ -1,0 +1,427 @@
+openapi: 3.0.0
+info:
+  title: Auction API
+  version: 1.0.0
+servers:
+  - url: http://{{ssourl}}
+  - url: http://{{publicurl}}
+components:
+  securitySchemes:
+    token:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    comment:
+      type: string
+      description: Free text to label an order. Max 255 characters long.
+    period:
+      type: object
+      properties:
+        contractId:
+          description: Contract id.	
+          type: string
+        volume:
+          description: Block volume in MW.
+          type: number
+    block:
+      type: object
+      required:
+        - name
+        - price
+        - minimumAcceptanceRatio
+        - periods
+      properties:
+        name:
+          description: Block name (40 characters max)
+          type: string
+        price:
+          description: Block price in currency assigned to order portfolio.
+          type: number
+        minimumAcceptanceRatio:
+          description: Minimum acceptance ratio allows to define lowest possible acceptance degree. Valid values are 0 and up to 1, where 0 means fully curtailable and 1 means not curtailable.
+          type: number
+        linkedTo:
+          description: Name of the block this block is linked to. Is NULL for regular or parent block.
+          type: string
+        isSpreadBlock:
+          description: Specify if current block is one of Spread blocks pair. Only required for spread block. Requires field "linkedTo" to contain name of another spread block in pair.
+          type: boolean
+        exclusiveGroup:
+          description: Name of Exclusive Ggroup this block belongs to. Equal to NULL if doesn't belong to any Exclusive Group.
+          type: string
+        periods:
+          description: List of block periods.	
+          type: array
+          items:
+            $ref: "#/components/schemas/period"
+    curve_point:
+      type: object
+      properties:
+        price:
+          description: Curve point price.
+          type: number
+        volume:
+          description: Curve point volume in MW.
+          type: number
+    curve:
+      type: object
+      properties:
+        contractId:
+          description: Contract id.
+          type: string
+        curvePoints:
+          description: List of curve points.
+          type: array
+          items:
+            $ref: "#/components/schemas/curve_point"
+      
+
+paths:
+  /connect/token:
+    post:
+      tags:
+        - default
+      summary: Token auction
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  example: password
+                scope:
+                  type: string
+                  example: auction_api
+                username:
+                  type: string
+                  example: USERNAME
+                password:
+                  type: string
+                  example: PASSWORD
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: Basic Y2xpZW50X2F1Y3Rpb25fYXBpOmNsaWVudF9hdWN0aW9uX2FwaQ==
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/x-www-form-urlencoded
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions:
+    get:
+      tags:
+        - default
+      summary: Auctions by closeBidding
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/xml
+        - name: closeBiddingFrom
+          in: query
+          schema:
+            type: string
+          example: '2019-09-20T10:00:00Z'
+        - name: closeBiddingTo
+          in: query
+          schema:
+            type: string
+          example: '2019-09-21T10:00:00Z'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions/{auctionIdExternal}/orders:
+    get:
+      tags:
+        - default
+      summary: Auctions Orders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auctionIdExternal
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions/{auctionIdExternal}/prices:
+    get:
+      tags:
+        - default
+      summary: Auctions Prices
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auctionIdExternal
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions/{auctionIdExternal}/portfoliovolumes:
+    get:
+      tags:
+        - default
+      summary: Auctions Portfolio Volumes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auctionIdExternal
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions/{auctionIdExternal}:
+    get:
+      tags:
+        - default
+      summary: Auctions Contracts
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auctionIdExternal
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auctions/{auctionIdExternal}/trades:
+    get:
+      tags:
+        - default
+      summary: Auctions Trades
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: auctionIdExternal
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /blockorders:
+    post:
+      tags:
+        - default
+      summary: BlockOrder submit
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              required:
+                - auctionId
+                - portfolio
+                - areaCode
+                - blocks
+              properties:
+                auctionId:
+                  description: Auction id.
+                  type: string
+                portfolio:
+                  description: Portfolio name.
+                  type: string
+                areaCode:
+                  description: Area code
+                  type: string
+                comment:
+                  $ref: "#/components/schemas/comment"
+                blocks:
+                  description: List of order blocks.
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/block"
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /blockorders/{orderId}:
+    patch:
+      tags:
+        - default
+      summary: BlockOrder modify
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              required:
+                - blocks
+              properties:
+                blocks:
+                  description: A list of blocks which will have status "Accepted" in the new version of the block order. All active blocks in the previous version will be cancelled.
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/block"
+                comment:
+                  $ref: "#/components/schemas/comment"
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - default
+      summary: BlockOrder by Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /curveorders:
+    post:
+      tags:
+        - default
+      summary: CurveOrder submit
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              required:
+                - auctionId
+                - portfolio
+                - areaCode
+                - curves
+              properties:
+                actionId:
+                  description: Id of auction subjected to order submission
+                  type: string
+                portfolio:
+                  description: Portfolio name
+                  type: string
+                comment:
+                  $ref: "#/components/schemas/comment"
+                curves:
+                  description: Array of curves
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/curve"
+
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /curveorders/{orderId}:
+    patch:
+      tags:
+        - default
+      summary: CurveOrder modify
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              type: object
+              required:
+                - curves
+              properties:
+                comment:
+                  $ref: "#/components/schemas/comment"
+                curves:
+                  description: Array of curve objects
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/curve"
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - default
+      summary: CurveOrder By Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: orderId
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
