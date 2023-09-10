@@ -52,57 +52,57 @@ from nordpool_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 auction_id_external = 'auction_id_external_example' # str | 
 
 try:
     # Auctions Contracts
     api_instance.auctions_auction_id_external_get(auction_id_external)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_auction_id_external_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_auction_id_external_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 auction_id_external = 'auction_id_external_example' # str | 
 
 try:
     # Auctions Orders
     api_instance.auctions_auction_id_external_orders_get(auction_id_external)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_auction_id_external_orders_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_auction_id_external_orders_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 auction_id_external = 'auction_id_external_example' # str | 
 
 try:
     # Auctions Portfolio Volumes
     api_instance.auctions_auction_id_external_portfoliovolumes_get(auction_id_external)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_auction_id_external_portfoliovolumes_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_auction_id_external_portfoliovolumes_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 auction_id_external = 'auction_id_external_example' # str | 
 
 try:
     # Auctions Prices
     api_instance.auctions_auction_id_external_prices_get(auction_id_external)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_auction_id_external_prices_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_auction_id_external_prices_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 auction_id_external = 'auction_id_external_example' # str | 
 
 try:
     # Auctions Trades
     api_instance.auctions_auction_id_external_trades_get(auction_id_external)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_auction_id_external_trades_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_auction_id_external_trades_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 accept = 'accept_example' # str |  (optional)
 close_bidding_from = 'close_bidding_from_example' # str |  (optional)
 close_bidding_to = 'close_bidding_to_example' # str |  (optional)
@@ -111,20 +111,20 @@ try:
     # Auctions by closeBidding
     api_instance.auctions_get(accept=accept, close_bidding_from=close_bidding_from, close_bidding_to=close_bidding_to)
 except ApiException as e:
-    print("Exception when calling DefaultApi->auctions_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->auctions_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 order_id = 'order_id_example' # str | 
 
 try:
     # BlockOrder by Id
     api_instance.blockorders_order_id_get(order_id)
 except ApiException as e:
-    print("Exception when calling DefaultApi->blockorders_order_id_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->blockorders_order_id_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 order_id = 'order_id_example' # str | 
 body = nordpool_client.BlockordersOrderIdBody() # BlockordersOrderIdBody |  (optional)
 
@@ -132,10 +132,10 @@ try:
     # BlockOrder modify
     api_instance.blockorders_order_id_patch(order_id, body=body)
 except ApiException as e:
-    print("Exception when calling DefaultApi->blockorders_order_id_patch: %s\n" % e)
+    print("Exception when calling AuctionsApi->blockorders_order_id_patch: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 body = nordpool_client.BlockordersBody() # BlockordersBody |  (optional)
 content_type = 'content_type_example' # str |  (optional)
 
@@ -143,10 +143,10 @@ try:
     # BlockOrder submit
     api_instance.blockorders_post(body=body, content_type=content_type)
 except ApiException as e:
-    print("Exception when calling DefaultApi->blockorders_post: %s\n" % e)
+    print("Exception when calling AuctionsApi->blockorders_post: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 grant_type = 'grant_type_example' # str |  (optional)
 scope = 'scope_example' # str |  (optional)
 username = 'username_example' # str |  (optional)
@@ -158,20 +158,20 @@ try:
     # Token auction
     api_instance.connect_token_post(grant_type=grant_type, scope=scope, username=username, password=password, authorization=authorization, content_type=content_type)
 except ApiException as e:
-    print("Exception when calling DefaultApi->connect_token_post: %s\n" % e)
+    print("Exception when calling AuctionsApi->connect_token_post: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 order_id = 'order_id_example' # str | 
 
 try:
     # CurveOrder By Id
     api_instance.curveorders_order_id_get(order_id)
 except ApiException as e:
-    print("Exception when calling DefaultApi->curveorders_order_id_get: %s\n" % e)
+    print("Exception when calling AuctionsApi->curveorders_order_id_get: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 order_id = 'order_id_example' # str | 
 body = nordpool_client.CurveordersOrderIdBody() # CurveordersOrderIdBody |  (optional)
 
@@ -179,10 +179,10 @@ try:
     # CurveOrder modify
     api_instance.curveorders_order_id_patch(order_id, body=body)
 except ApiException as e:
-    print("Exception when calling DefaultApi->curveorders_order_id_patch: %s\n" % e)
+    print("Exception when calling AuctionsApi->curveorders_order_id_patch: %s\n" % e)
 
 # create an instance of the API class
-api_instance = nordpool_client.DefaultApi(nordpool_client.ApiClient(configuration))
+api_instance = nordpool_client.AuctionsApi(nordpool_client.ApiClient(configuration))
 body = nordpool_client.CurveordersBody() # CurveordersBody |  (optional)
 content_type = 'content_type_example' # str |  (optional)
 
@@ -190,7 +190,7 @@ try:
     # CurveOrder submit
     api_instance.curveorders_post(body=body, content_type=content_type)
 except ApiException as e:
-    print("Exception when calling DefaultApi->curveorders_post: %s\n" % e)
+    print("Exception when calling AuctionsApi->curveorders_post: %s\n" % e)
 ```
 
 ## Documentation for API Endpoints
@@ -199,19 +199,19 @@ All URIs are relative to *http://{{ssourl}}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**auctions_auction_id_external_get**](docs/DefaultApi.md#auctions_auction_id_external_get) | **GET** /auctions/{auctionIdExternal} | Auctions Contracts
-*DefaultApi* | [**auctions_auction_id_external_orders_get**](docs/DefaultApi.md#auctions_auction_id_external_orders_get) | **GET** /auctions/{auctionIdExternal}/orders | Auctions Orders
-*DefaultApi* | [**auctions_auction_id_external_portfoliovolumes_get**](docs/DefaultApi.md#auctions_auction_id_external_portfoliovolumes_get) | **GET** /auctions/{auctionIdExternal}/portfoliovolumes | Auctions Portfolio Volumes
-*DefaultApi* | [**auctions_auction_id_external_prices_get**](docs/DefaultApi.md#auctions_auction_id_external_prices_get) | **GET** /auctions/{auctionIdExternal}/prices | Auctions Prices
-*DefaultApi* | [**auctions_auction_id_external_trades_get**](docs/DefaultApi.md#auctions_auction_id_external_trades_get) | **GET** /auctions/{auctionIdExternal}/trades | Auctions Trades
-*DefaultApi* | [**auctions_get**](docs/DefaultApi.md#auctions_get) | **GET** /auctions | Auctions by closeBidding
-*DefaultApi* | [**blockorders_order_id_get**](docs/DefaultApi.md#blockorders_order_id_get) | **GET** /blockorders/{orderId} | BlockOrder by Id
-*DefaultApi* | [**blockorders_order_id_patch**](docs/DefaultApi.md#blockorders_order_id_patch) | **PATCH** /blockorders/{orderId} | BlockOrder modify
-*DefaultApi* | [**blockorders_post**](docs/DefaultApi.md#blockorders_post) | **POST** /blockorders | BlockOrder submit
-*DefaultApi* | [**connect_token_post**](docs/DefaultApi.md#connect_token_post) | **POST** /connect/token | Token auction
-*DefaultApi* | [**curveorders_order_id_get**](docs/DefaultApi.md#curveorders_order_id_get) | **GET** /curveorders/{orderId} | CurveOrder By Id
-*DefaultApi* | [**curveorders_order_id_patch**](docs/DefaultApi.md#curveorders_order_id_patch) | **PATCH** /curveorders/{orderId} | CurveOrder modify
-*DefaultApi* | [**curveorders_post**](docs/DefaultApi.md#curveorders_post) | **POST** /curveorders | CurveOrder submit
+*AuctionsApi* | [**auctions_auction_id_external_get**](docs/AuctionsApi.md#auctions_auction_id_external_get) | **GET** /auctions/{auctionIdExternal} | Auctions Contracts
+*AuctionsApi* | [**auctions_auction_id_external_orders_get**](docs/AuctionsApi.md#auctions_auction_id_external_orders_get) | **GET** /auctions/{auctionIdExternal}/orders | Auctions Orders
+*AuctionsApi* | [**auctions_auction_id_external_portfoliovolumes_get**](docs/AuctionsApi.md#auctions_auction_id_external_portfoliovolumes_get) | **GET** /auctions/{auctionIdExternal}/portfoliovolumes | Auctions Portfolio Volumes
+*AuctionsApi* | [**auctions_auction_id_external_prices_get**](docs/AuctionsApi.md#auctions_auction_id_external_prices_get) | **GET** /auctions/{auctionIdExternal}/prices | Auctions Prices
+*AuctionsApi* | [**auctions_auction_id_external_trades_get**](docs/AuctionsApi.md#auctions_auction_id_external_trades_get) | **GET** /auctions/{auctionIdExternal}/trades | Auctions Trades
+*AuctionsApi* | [**auctions_get**](docs/AuctionsApi.md#auctions_get) | **GET** /auctions | Auctions by closeBidding
+*AuctionsApi* | [**blockorders_order_id_get**](docs/AuctionsApi.md#blockorders_order_id_get) | **GET** /blockorders/{orderId} | BlockOrder by Id
+*AuctionsApi* | [**blockorders_order_id_patch**](docs/AuctionsApi.md#blockorders_order_id_patch) | **PATCH** /blockorders/{orderId} | BlockOrder modify
+*AuctionsApi* | [**blockorders_post**](docs/AuctionsApi.md#blockorders_post) | **POST** /blockorders | BlockOrder submit
+*AuctionsApi* | [**connect_token_post**](docs/AuctionsApi.md#connect_token_post) | **POST** /connect/token | Token auction
+*AuctionsApi* | [**curveorders_order_id_get**](docs/AuctionsApi.md#curveorders_order_id_get) | **GET** /curveorders/{orderId} | CurveOrder By Id
+*AuctionsApi* | [**curveorders_order_id_patch**](docs/AuctionsApi.md#curveorders_order_id_patch) | **PATCH** /curveorders/{orderId} | CurveOrder modify
+*AuctionsApi* | [**curveorders_post**](docs/AuctionsApi.md#curveorders_post) | **POST** /curveorders | CurveOrder submit
 
 ## Documentation For Models
 

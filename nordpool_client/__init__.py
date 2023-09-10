@@ -15,7 +15,7 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
-from nordpool_client.api.default_api import DefaultApi
+from nordpool_client.api.auctions_api import AuctionsApi
 # import ApiClient
 from nordpool_client.api_client import ApiClient
 from nordpool_client.configuration import Configuration

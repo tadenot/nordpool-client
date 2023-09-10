@@ -81,7 +81,7 @@ paths:
   /connect/token:
     post:
       tags:
-        - default
+        - auctions
       summary: Token auction
       requestBody:
         content:
@@ -122,7 +122,7 @@ paths:
   /auctions:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions by closeBidding
       security:
         - bearerAuth: []
@@ -150,7 +150,7 @@ paths:
   /auctions/{auctionIdExternal}/orders:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions Orders
       security:
         - bearerAuth: []
@@ -168,7 +168,7 @@ paths:
   /auctions/{auctionIdExternal}/prices:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions Prices
       security:
         - bearerAuth: []
@@ -186,7 +186,7 @@ paths:
   /auctions/{auctionIdExternal}/portfoliovolumes:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions Portfolio Volumes
       security:
         - bearerAuth: []
@@ -204,7 +204,7 @@ paths:
   /auctions/{auctionIdExternal}:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions Contracts
       security:
         - bearerAuth: []
@@ -222,7 +222,7 @@ paths:
   /auctions/{auctionIdExternal}/trades:
     get:
       tags:
-        - default
+        - auctions
       summary: Auctions Trades
       security:
         - bearerAuth: []
@@ -240,7 +240,7 @@ paths:
   /blockorders:
     post:
       tags:
-        - default
+        - auctions
       summary: BlockOrder submit
       requestBody:
         content:
@@ -285,7 +285,7 @@ paths:
   /blockorders/{orderId}:
     patch:
       tags:
-        - default
+        - auctions
       summary: BlockOrder modify
       requestBody:
         content:
@@ -317,7 +317,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - default
+        - auctions
       summary: BlockOrder by Id
       security:
         - bearerAuth: []
@@ -335,7 +335,7 @@ paths:
   /curveorders:
     post:
       tags:
-        - default
+        - auctions
       summary: CurveOrder submit
       requestBody:
         content:
@@ -378,7 +378,7 @@ paths:
   /curveorders/{orderId}:
     patch:
       tags:
-        - default
+        - auctions
       summary: CurveOrder modify
       requestBody:
         content:
@@ -410,7 +410,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - default
+        - auctions
       summary: CurveOrder By Id
       security:
         - bearerAuth: []
